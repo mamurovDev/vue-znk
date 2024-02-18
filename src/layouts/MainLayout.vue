@@ -1,18 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <q-toolbar>
-        <div class="">Знакомства по всему миру</div>
-        <q-select
-          borderless
-          v-model="country"
-          :options="options"
-          label-color="white"
-          class="select"
-        />
-      </q-toolbar>
-    </q-header>
-
+  <q-layout>
     <q-page-container>
       <router-view />
     </q-page-container>
@@ -20,30 +7,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import router from "src/router";
+import { defineComponent } from "vue";
 // import EssentialLink from 'components/EssentialLink.vue';
 
 export default defineComponent({
   name: "MainLayout",
-  data() {
-    return {
-      options: ["🇺🇸 Америка", "🇷🇺 Russia", "🏴󠁧󠁢󠁥󠁮󠁧󠁿 England"],
-      country: ref("🇺🇸 Америка"),
-    };
-  },
-  components: {
-    // EssentialLink,
-  },
-
-  setup() {
-    const leftDrawerOpen = ref(false);
-
-    return {
-      leftDrawerOpen,
-      toggleLeftDrawer() {
-        leftDrawerOpen.value = !leftDrawerOpen.value;
-      },
-    };
+  mounted() {
+    this.$router.replace("register/login");
   },
 });
 </script>
